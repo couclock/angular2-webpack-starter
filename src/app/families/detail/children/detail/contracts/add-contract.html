@@ -1,0 +1,31 @@
+<h1 md-dialog-title>Nouveau contrat pour {{ child.firstName }}</h1>
+
+<form novalidate>
+  <div md-dialog-content>
+    <div fxLayout="row">
+      <md-input-container>
+        <input mdInput type="date" name="fromDate" placeholder="Date de début" #fromDate value="{{ contract.fromDate }}">
+      </md-input-container>
+      <md-input-container fxFlexOffset="10">
+        <input mdInput type="date" name="toDate" placeholder="Date de fin" #toDate value="{{ contract.toDate }}">
+      </md-input-container>
+    </div>
+    <div fxLayout="row">
+      <md-input-container>
+        <input mdInput type="number" placeholder="Semaines de congés" #holidayWeekCount value="{{ contract.holidayWeekCount }}">
+      </md-input-container>
+      <md-input-container fxFlexOffset="10">
+        <input mdInput type="number" placeholder="Heures par semaine" #hoursPerWeek value="{{ contract.hoursPerWeek }}">
+      </md-input-container>
+    </div>
+  </div>
+  <div md-dialog-actions fxLayout="row" fxLayoutAlign="start center">
+    <div fxFlex>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+      <button type="button" md-button (click)="dialogRef.close()">Annuler</button> &nbsp;&nbsp;
+      <button type="submit" md-raised-button (click)="saveContract(fromDate.value, toDate.value, holidayWeekCount.value, hoursPerWeek.value)"
+        color="accent">Enregistrer</button>
+    </div>
+  </div>
+</form>

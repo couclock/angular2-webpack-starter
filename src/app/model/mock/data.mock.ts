@@ -44,13 +44,13 @@ export const CONTRACTS: Contract[] = [
     {
         id: 12,
         status: CONTRACT_STATUS.PREPARING,
-        fromDate: '2017-07-01'
+        fromDate: new Date('2017-07-01')
     },
     {
         id: 13,
         status: CONTRACT_STATUS.VALIDATED,
-        fromDate: '2017-01-01',
-        toDate: '2017-07-01',
+        fromDate: new Date('2017-01-01'),
+        toDate: new Date('2017-07-01'),
         pricePerMonth: 451.21,
         holidayWeekCount: 6,
         hoursPerWeek: 20
@@ -58,8 +58,8 @@ export const CONTRACTS: Contract[] = [
     {
         id: 14,
         status: CONTRACT_STATUS.ACTIVE,
-        fromDate: '2016-01-01',
-        toDate: '2016-12-31',
+        fromDate: new Date('2016-01-01'),
+        toDate: new Date('2016-12-31'),
         pricePerMonth: 432.87,
         holidayWeekCount: 17,
         hoursPerWeek: 47
@@ -67,8 +67,8 @@ export const CONTRACTS: Contract[] = [
     {
         id: 15,
         status: CONTRACT_STATUS.DONE,
-        fromDate: '2015-01-01',
-        toDate: '2015-12-31',
+        fromDate: new Date('2015-01-01'),
+        toDate: new Date('2015-12-31'),
         pricePerMonth: 407.48,
         holidayWeekCount: 26,
         hoursPerWeek: 45
@@ -76,8 +76,8 @@ export const CONTRACTS: Contract[] = [
     {
         id: 16,
         status: CONTRACT_STATUS.DONE,
-        fromDate: '2014-01-01',
-        toDate: '2014-12-31',
+        fromDate: new Date('2014-01-01'),
+        toDate: new Date('2014-12-31'),
         pricePerMonth: 404.48,
         holidayWeekCount: 26,
         hoursPerWeek: 45

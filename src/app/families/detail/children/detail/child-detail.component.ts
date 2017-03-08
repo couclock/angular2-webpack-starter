@@ -10,6 +10,7 @@ import { Family } from '../../../../model/family.model';
 import { Child } from '../../../../model/child.model';
 
 import { DeleteChildDialogComponent } from './delete-child.component';
+import { AddContractDialogComponent } from './contracts';
 
 import _ from 'lodash';
 
@@ -107,10 +108,10 @@ export class ChildDetailComponent implements OnInit {
         if (this.currentTabIndex === TABS.INFOS) {
             dialogRef = this.dialog.open(DeleteChildDialogComponent, config);
         }
-        /*
-        if (this.currentTabIndex === 1) {
-            dialogRef = this.dialog.open(AddParentDialogComponent, config);
+        if (this.currentTabIndex === TABS.CONTRACTS) {
+            dialogRef = this.dialog.open(AddContractDialogComponent, config);
         }
+        /*
         if (this.currentTabIndex === 2) {
             dialogRef = this.dialog.open(AddContactDialogComponent, config);
         }

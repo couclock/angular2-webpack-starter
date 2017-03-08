@@ -32,7 +32,10 @@ import { DeleteChildDialogComponent } from './detail/children/detail/delete-chil
 import { InlineEditComponent } from './detail/children/detail/inline-edit.component';
 
 import { ChildInfosComponent } from './detail/children/detail/infos';
-import { ChildContractsComponent } from './detail/children/detail/contracts';
+import {
+  ChildContractsComponent,
+  AddContractDialogComponent
+} from './detail/children/detail/contracts';
 
 export const ROUTES: Routes = [
   { path: 'families/:familyName/:familyId', component: FamilyDetailComponent },
@@ -64,14 +67,16 @@ export const ROUTES: Routes = [
     DeleteChildDialogComponent,
     InlineEditComponent,
     ChildInfosComponent,
-    ChildContractsComponent
+    ChildContractsComponent,
+    AddContractDialogComponent
   ],
   entryComponents: [
     AddFamilyDialogComponent,
     AddChildDialogComponent,
     AddParentDialogComponent,
     AddContactDialogComponent,
-    DeleteChildDialogComponent
+    DeleteChildDialogComponent,
+    AddContractDialogComponent
   ]
 })
 export class FamiliesModule { }

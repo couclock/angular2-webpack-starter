@@ -12,15 +12,15 @@ export enum CONTRACT_STATUS {
 export class Contract {
     public id?: number;
     public status: CONTRACT_STATUS;
-    public fromDate?: string;
-    public toDate?: string;
+    public fromDate?: Date;
+    public toDate?: Date;
     public pricePerMonth?: number;
     public holidayWeekCount?: number;
     public hoursPerWeek?: number;
     public planning?: Map<DAY_OF_WEEK, ContractPlanningDay>;
 
     constructor() {
-        this.initPlanning();
+        // this.initPlanning();
     }
 
     public initPlanning?(): void {

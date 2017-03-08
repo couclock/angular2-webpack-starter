@@ -3,8 +3,7 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Child } from './child.model';
-import { CHILDREN } from './mock/data.mock';
+import { Child, Contract } from './index';
 
 @Injectable()
 export class ChildService {
@@ -22,6 +21,21 @@ export class ChildService {
         return this.http.delete(url, { headers: this.headers })
             .toPromise()
             .then(() => null)
+            .catch(this.handleError);
+    }
+
+    /**
+     * Add contract to given childId
+     */
+    public addContract(childId: number, contract: Contract): Promise<Contract> {
+
+        const url = `${this.childrenUrl}/${childId}/contracts`;
+
+        return this.http.post(url, JSON.stringify(contract), { headers: this.headers })
+            .toPromise()
+            .then((response) => {
+                return response.json() as Contract;
+            })
             .catch(this.handleError);
     }
 

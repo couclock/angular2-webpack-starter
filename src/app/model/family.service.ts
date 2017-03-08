@@ -7,7 +7,6 @@ import { Family } from './family.model';
 import { Child } from './child.model';
 import { Parent } from './parent.model';
 import { Contact } from './contact.model';
-import { FAMILIES } from './mock/data.mock';
 
 @Injectable()
 export class FamilyService {
@@ -20,7 +19,6 @@ export class FamilyService {
      * Get all families
      */
     public getFamilies(): Promise<Family[]> {
-        console.log('getFamilies : ', FAMILIES);
 
         return this.http.get(this.familiesUrl)
             .toPromise()

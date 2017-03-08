@@ -12,7 +12,4 @@ export class ChildContractsComponent {
     @Input()
     public child: Child;
 
-    constructor() {
-    }
-
 }
