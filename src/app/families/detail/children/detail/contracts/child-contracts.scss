@@ -1,1 +1,64 @@
-// To complete of necessary
+@import '../../../../../../styles/styles';
+$contract-preparing: mat-palette($mat-light-green);
+$contract-validated: mat-palette($mat-yellow);
+$contract-active: mat-palette($mat-pink);
+$contract-done: mat-palette($mat-grey);
+.child-contracts {
+    padding: 10px;
+    .child-contract {
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-bottom: 20px;
+        md-card {
+            &.contract-preparing {
+                background-color: mat-color($contract-preparing);
+                .more {
+                    background-color: mat-color($contract-preparing, A700);
+                }
+            }
+            &.contract-validated {
+                background-color: mat-color($contract-validated);
+                .more {
+                    background-color: mat-color($contract-validated, A700);
+                }
+            }
+            &.contract-active {
+                background-color: mat-color($contract-active);
+                .more {
+                    background-color: mat-color($contract-active, A700);
+                }
+            }
+            &.contract-done {
+                background-color: mat-color($contract-done, 300);
+                color: mat-color($contract-done, 700);
+                .more {
+                    background-color: mat-color($contract-done, A700);
+                }
+            }
+            padding-top: 10px;
+            padding-bottom: 10px;
+            md-card-title {
+                margin-bottom: 0;
+                text-align: center;
+                .more {
+                    float: right;
+                    position: relative;
+                    right: -30px;
+                    bottom: 16px;
+                    padding: 10px;
+                    padding-bottom: 8px;
+                    color: white;
+                }
+            }
+            md-card-content {
+                .contact-link {
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+                md-icon {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}

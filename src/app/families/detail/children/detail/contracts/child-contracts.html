@@ -1,5 +1,21 @@
-<div class="contracts-infos" *ngIf="child">
 
-TRACE contracts : <pre>{{ child.contracts | json }}</pre>
+<div class="child-contracts" *ngIf="child" fxLayout="row" fxLayoutAlign="center" fxLayoutWrap="wrap">
 
+    <div class="child-contract" fxFlex="33%" *ngFor="let contract of child.contracts; let idx = index;">
+        <md-card class="contract-{{ contract.status | lowercase }}">
+            <md-card-title>
+                {{ contract.status }}
+                <button mb-button class="more" (click)="editContact(idx, contact)">
+                    <md-icon>edit</md-icon>
+                </button>
+            </md-card-title>
+            <md-card-content>
+
+                <pre>
+{{ contract | json }}
+                </pre>
+
+            </md-card-content>
+        </md-card>
+    </div>
 </div>
