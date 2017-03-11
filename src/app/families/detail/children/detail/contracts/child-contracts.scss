@@ -23,7 +23,7 @@ $contract-done: mat-palette($mat-grey);
                 }
             }
             &.contract-active {
-                background-color: mat-color($contract-active);
+                background-color: mat-color($contract-active, 400);
                 .more {
                     background-color: mat-color($contract-active, A700);
                 }
@@ -40,6 +40,7 @@ $contract-done: mat-palette($mat-grey);
             md-card-title {
                 margin-bottom: 0;
                 text-align: center;
+                font-weight: bold;
                 .more {
                     float: right;
                     position: relative;

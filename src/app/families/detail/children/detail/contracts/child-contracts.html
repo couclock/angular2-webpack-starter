@@ -4,9 +4,12 @@
     <div class="child-contract" fxFlex="33%" *ngFor="let contract of child.contracts; let idx = index;">
         <md-card class="contract-{{ contract.status | lowercase }}">
             <md-card-title>
-                {{ contract.status }}
+                <span *ngIf="contract.status === 'PREPARING'">En préparation</span>
+                <span *ngIf="contract.status === 'VALIDATED'">Validé</span>
+                <span *ngIf="contract.status === 'ACTIVE'">En cours</span>
+                <span *ngIf="contract.status === 'DONE'">Terminé</span>
                 <button mb-button class="more" (click)="editContact(idx, contact)">
-                    <md-icon>edit</md-icon>
+                    <md-icon>search</md-icon>
                 </button>
             </md-card-title>
             <md-card-content>

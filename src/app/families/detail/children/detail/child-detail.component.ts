@@ -1,9 +1,8 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GlobalState } from '../../../../global-state.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { MdDialog, MdDialogConfig, MdTabChangeEvent } from '@angular/material';
-import { Ng2FloatBtnComponent, Ng2FloatBtn } from 'ng2-float-btn';
 
 import { FamilyService } from '../../../../model/family.service';
 import { Family } from '../../../../model/family.model';
