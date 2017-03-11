@@ -35,6 +35,9 @@ export class AddContractDialogComponent {
             };
             this.childService.addContract(this.child.id, contract).then(() => {
                 this.dialogRef.close('CREATE_CONTRACT');
+            },
+            (error) => {
+                console.log('ERRRRRRRRRRRRRRRRRRRR : ', error);
             });
 
     }
