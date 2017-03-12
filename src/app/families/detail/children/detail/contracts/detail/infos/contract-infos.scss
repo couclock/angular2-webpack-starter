@@ -1,0 +1,26 @@
+@import '../../../../../../../../styles/styles';
+.contract-infos {
+    .left-column {
+        padding: 10px;
+    }
+    .right-column {
+        padding: 10px;
+        md-chip {
+            font-weight: bold;
+            font-size: 1.5em;
+            padding: 15px;
+            &.contract-preparing {
+                background-color: mat-color($contract-preparing, 700);
+            }
+            &.contract-validated {
+                background-color: mat-color($contract-validated, 700);
+            }
+            &.contract-active {
+                background-color: mat-color($contract-active, 700);
+            }
+            &.contract-done {
+                background-color: mat-color($contract-done, 700);
+            }
+        }
+    }
+}

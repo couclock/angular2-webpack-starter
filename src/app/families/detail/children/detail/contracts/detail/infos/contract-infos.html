@@ -1,0 +1,33 @@
+<div class="contract-infos" fxLayout="row" *ngIf="contract">
+
+    <div class="left-column" fxFlex>
+        <div fxLayout="row" fxLayoutAlign="space-around">
+            <md-input-container>
+                <input mdInput type="date" name="fromDate" [disabled]="isDisabled('fromDate')" placeholder="Date de début" #fromDate value="{{ contract.fromDate }}">
+            </md-input-container>
+            <md-input-container fxFlexOffset="10">
+                <input mdInput type="date" name="toDate" [disabled]="isDisabled('toDate')" placeholder="Date de fin" #toDate value="{{ contract.toDate }}">
+            </md-input-container>
+        </div>
+         <div fxLayout="row" fxLayoutAlign="space-around">
+      <md-input-container>
+        <input mdInput type="number" [disabled]="isDisabled('holidayWeekCount')" placeholder="Semaines de congés" #holidayWeekCount value="{{ contract.holidayWeekCount }}">
+      </md-input-container>
+      <md-input-container fxFlexOffset="10">
+        <input mdInput type="number" [disabled]="isDisabled('hoursPerWeek')" placeholder="Heures par semaine" #hoursPerWeek value="{{ contract.hoursPerWeek }}">
+      </md-input-container>
+    </div>
+    </div>
+
+    <div class="right-column">
+        <md-chip-list>
+            <md-chip class="contract-{{ contract.status | lowercase }}" selected="true">
+                <span *ngIf="contract.status === 'PREPARING'">En préparation</span>
+                <span *ngIf="contract.status === 'VALIDATED'">Validé</span>
+                <span *ngIf="contract.status === 'ACTIVE'">En cours</span>
+                <span *ngIf="contract.status === 'DONE'">Terminé</span>
+            </md-chip>
+        </md-chip-list>
+    </div>
+
+</div>

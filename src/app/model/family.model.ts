@@ -1,7 +1,5 @@
 
-import { Child } from './child.model';
-import { Parent } from './parent.model';
-import { Contact } from './contact.model';
+import { Child, Parent, Contact } from '.';
 
 export class Family {
     public id?: number;

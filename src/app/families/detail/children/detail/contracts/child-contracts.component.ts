@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Child } from '../../../../../model';
+import { Child, Family } from '../../../../../model';
 
 @Component({
     selector: 'child-contracts',
@@ -11,4 +11,7 @@ export class ChildContractsComponent {
 
     @Input()
     public child: Child;
+    @Input()
+    public family: Family;
+
 }

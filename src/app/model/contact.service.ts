@@ -3,11 +3,7 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Family } from './family.model';
-import { Child } from './child.model';
-import { Parent } from './parent.model';
 import { Contact } from './contact.model';
-import { FAMILIES } from './mock/data.mock';
 
 @Injectable()
 export class ContactService {

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { MdDialog, MdDialogRef, MdDialogConfig, MdTabChangeEvent } from '@angular/material';
+import { MdDialog, MdDialogConfig } from '@angular/material';
 
 import { AddContactDialogComponent } from './add-contact.component';
 

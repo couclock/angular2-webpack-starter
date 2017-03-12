@@ -1,4 +1,6 @@
 
+import { Contract } from '.';
+
 export class Child {
     public id?: number;
     public firstName: string;
@@ -6,4 +8,5 @@ export class Child {
     public sex?: string;
     public allergy?: string;
     public comment?: string;
+    public contracts?: Contract[];
 }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { GlobalState } from '../../global-state.service';
-import { MdSidenav } from '@angular/material';
 
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 

@@ -32,6 +32,11 @@ $warn-color: mat-color($app-warn);
 
 $text-color: rgba(black, 0.87);
 
+$contract-preparing: mat-palette($mat-light-green);
+$contract-validated: mat-palette($mat-yellow);
+$contract-active: mat-palette($mat-pink);
+$contract-done: mat-palette($mat-grey);
+
 body,html {
   height:100%;
   font-family: Roboto,"Helvetica Neue",sans-serif;
@@ -46,4 +51,9 @@ body,html {
         font-size: 36px;
         width: 36px;
     }
+}
+
+.error-snack-bar {
+  background-color : $warn-color !important;
+  font-weight: bold;
 }

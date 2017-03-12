@@ -5,8 +5,6 @@ import { NoContentComponent } from './no-content';
 import { PlanningComponent } from './planning/planning.component';
 import { FamiliesComponent } from './families/families.component';
 
-import { DataResolver } from './app.resolver';
-
 export const ROUTES: Routes = [
   { path: '',      component: PlanningComponent },
   { path: 'planning',  component: PlanningComponent },

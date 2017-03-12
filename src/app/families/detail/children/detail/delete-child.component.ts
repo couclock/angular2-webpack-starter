@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { MdDialogRef } from '@angular/material';
 
-import { ChildService } from '../../../../model/child.service';
-import { Family } from '../../../model/family.model';
-import { Child } from '../../../../model/child.model';
+import { Child, ChildService } from '../../../../model';
 
 @Component({
     selector: 'delete-child',

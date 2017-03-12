@@ -1,15 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { GlobalState } from '../../../../global-state.service';
+import { GlobalState } from '../../../../../../global-state.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { MdDialog, MdDialogConfig, MdTabChangeEvent } from '@angular/material';
+import { MdDialog, MdTabChangeEvent } from '@angular/material';
 
-import { FamilyService } from '../../../../model/family.service';
-import { Family } from '../../../../model/family.model';
-import { Child } from '../../../../model/child.model';
-
-import { DeleteChildDialogComponent } from './delete-child.component';
-import { AddContractDialogComponent } from './contracts';
+import { FamilyService, Family, Child, Contract } from '../../../../../../model';
 
 import _ from 'lodash';
 
@@ -21,19 +16,21 @@ export enum TABS {
 }
 
 @Component({
-    selector: 'child-detail',
-    template: require('./child-detail.html'),
-    styles: [require('./child-detail.scss')]
+    selector: 'contract-detail',
+    template: require('./contract-detail.html'),
+    styles: [require('./contract-detail.scss')]
 })
-export class ChildDetailComponent implements OnInit {
+export class ContractDetailComponent implements OnInit {
 
     public familyName: string;
     public familyId: number;
     public childName: string;
     public childId: number;
+    public contractId: number;
 
     public family: Family;
     public child: Child;
+    public contract: Contract;
 
     public showAddButton: Boolean = true;
     public TABS = TABS;
@@ -51,16 +48,16 @@ export class ChildDetailComponent implements OnInit {
             this.familyName = params['familyName'];
             this.childId = Number(params['childId']);
             this.childName = params['childName'];
+            this.contractId = Number(params['contractId']);
         });
+        this.getFamily();
 
-        console.log('constructor : ', this);
     }
 
     public ngOnInit(): void {
-        console.log('ngOnInit');
         this._state.notifyDataChanged(
             'navbar.title',
-            this.childName + ' ' + this.familyName
+            'Contrat n°' + this.contractId + ' de ' + this.childName + ' ' + this.familyName
         );
         this._state.notifyDataChanged(
             'breadcrumb',
@@ -72,10 +69,15 @@ export class ChildDetailComponent implements OnInit {
                 {
                     label: 'Famille "' + this.familyName + '"',
                     link: '/families/' + this.familyName + '/' + this.familyId
+                },
+                {
+                    label: this.childName + ' ' + this.familyName,
+                    link: '/families/' + this.familyName + '/' + this.familyId + '/'
+                        + this.childName + '/' + this.childId
                 }
+
             ]
         );
-        this.getFamily();
     }
 
     /**
@@ -100,24 +102,23 @@ export class ChildDetailComponent implements OnInit {
      */
     public openDialog() {
         let dialogRef;
+        /*
         let config: MdDialogConfig = {
             data: {
                 family: this.family,
                 child: this.child
             }
         };
-
-        if (this.currentTabIndex === TABS.INFOS) {
-            dialogRef = this.dialog.open(DeleteChildDialogComponent, config);
-        }
-        if (this.currentTabIndex === TABS.CONTRACTS) {
-            dialogRef = this.dialog.open(AddContractDialogComponent, config);
-        }
-        /*
-        if (this.currentTabIndex === 2) {
-            dialogRef = this.dialog.open(AddContactDialogComponent, config);
-        }
-        */
+                if (this.currentTabIndex === TABS.INFOS) {
+                    dialogRef = this.dialog.open(DeleteChildDialogComponent, config);
+                }
+                if (this.currentTabIndex === TABS.CONTRACTS) {
+                    dialogRef = this.dialog.open(AddContractDialogComponent, config);
+                }
+                if (this.currentTabIndex === 2) {
+                    dialogRef = this.dialog.open(AddContactDialogComponent, config);
+                }
+                */
         dialogRef.afterClosed().subscribe((doneAction) => {
             if (doneAction === 'DELETE') {
                 this.router.navigate(['/families', this.familyName, this.familyId]);
@@ -127,13 +128,16 @@ export class ChildDetailComponent implements OnInit {
     }
 
     /**
-     * Get current family and child
+     * Get current family and child and contract
      */
-    private getFamily(): void {
-        this.familyService.getFamily(this.familyId).then((family: Family) => {
+    private getFamily(): Promise<void> {
+        return this.familyService.getFamily(this.familyId).then((family: Family) => {
             this.family = family;
             this.child = _.find(family.children, (oneChild: Child) => {
                 return oneChild.id === this.childId;
+            });
+            this.contract = _.find(this.child.contracts, (oneContract: Contract) => {
+                return oneContract.id === this.contractId;
             });
         });
     }

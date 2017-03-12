@@ -9,7 +9,7 @@ import {
   PreloadAllModules,
   Routes
 } from '@angular/router';
-import { Md2Module }  from 'md2';
+import { Md2Module } from 'md2';
 
 import { Mv3CommonModule } from '../common/common.module';
 
@@ -19,8 +19,7 @@ import { AddFamilyDialogComponent } from './add-family.component';
 import { FamilyDetailComponent } from './detail/family-detail.component';
 import { ChildDetailComponent } from './detail/children/detail/child-detail.component';
 
-import { FamilyDetailChildrenComponent } from './detail/children/family-detail-children.component';
-import { AddChildDialogComponent } from './detail/children/add-child.component';
+import { ChildrenListComponent, AddChildDialogComponent } from './detail/children';
 
 import { FamilyDetailParentsComponent } from './detail/parents/family-detail-parents.component';
 import { AddParentDialogComponent } from './detail/parents/add-parent.component';
@@ -37,9 +36,17 @@ import {
   AddContractDialogComponent
 } from './detail/children/detail/contracts';
 
+import {
+  ContractDetailComponent, ContractInfosComponent
+} from './detail/children/detail/contracts/detail';
+
 export const ROUTES: Routes = [
   { path: 'families/:familyName/:familyId', component: FamilyDetailComponent },
-    { path: 'families/:familyName/:familyId/:childName/:childId', component: ChildDetailComponent }
+  { path: 'families/:familyName/:familyId/:childName/:childId', component: ChildDetailComponent },
+  {
+    path: 'families/:familyName/:familyId/:childName/:childId/contracts/:contractId',
+    component: ContractDetailComponent
+  }
 ];
 
 @NgModule({
@@ -57,7 +64,7 @@ export const ROUTES: Routes = [
     FamiliesComponent,
     AddFamilyDialogComponent,
     FamilyDetailComponent,
-    FamilyDetailChildrenComponent,
+    ChildrenListComponent,
     AddChildDialogComponent,
     FamilyDetailParentsComponent,
     AddParentDialogComponent,
@@ -68,7 +75,9 @@ export const ROUTES: Routes = [
     InlineEditComponent,
     ChildInfosComponent,
     ChildContractsComponent,
-    AddContractDialogComponent
+    AddContractDialogComponent,
+    ContractDetailComponent,
+    ContractInfosComponent
   ],
   entryComponents: [
     AddFamilyDialogComponent,

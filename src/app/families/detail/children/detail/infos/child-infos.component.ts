@@ -1,13 +1,10 @@
-import { Component, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { GlobalState } from '../../../../../global-state.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { MdSnackBar } from '@angular/material';
-import { Ng2FloatBtnComponent, Ng2FloatBtn } from 'ng2-float-btn';
 
-import { ChildService } from '../../../../../model/child.service';
-import { Family } from '../../../../model/family.model';
-import { Child } from '../../../../../model/child.model';
+import { Child, ChildService } from '../../../../../model';
 
 import _ from 'lodash';
 
@@ -105,6 +102,19 @@ export class ChildInfosComponent {
             this._state.notifyDataChanged(
                 'navbar.title',
                 this.child.firstName + ' ' + this.familyName
+            );
+            this._state.notifyDataChanged(
+                'breadcrumb',
+                [
+                    {
+                        label: 'Les familles',
+                        link: '/families'
+                    },
+                    {
+                        label: 'Famille "' + this.familyName + '"',
+                        link: '/families/' + this.familyName + '/' + this.familyId
+                    }
+                ]
             );
             this.snackBar.open('Modification enregistrée !', null, {
                 duration: 2000,

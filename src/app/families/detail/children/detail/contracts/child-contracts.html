@@ -1,5 +1,4 @@
-
-<div class="child-contracts" *ngIf="child" fxLayout="row" fxLayoutAlign="center" fxLayoutWrap="wrap">
+<div id="child-contracts" class="child-contracts" *ngIf="child" fxLayout="row" fxLayoutAlign="center" fxLayoutWrap="wrap">
 
     <div class="child-contract" fxFlex="33%" *ngFor="let contract of child.contracts; let idx = index;">
         <md-card class="contract-{{ contract.status | lowercase }}">
@@ -8,16 +7,17 @@
                 <span *ngIf="contract.status === 'VALIDATED'">Validé</span>
                 <span *ngIf="contract.status === 'ACTIVE'">En cours</span>
                 <span *ngIf="contract.status === 'DONE'">Terminé</span>
-                <button mb-button class="more" (click)="editContact(idx, contact)">
+
+                <div class="more">
+                <a mb-button class="white-link" 
+                routerLink="/families/{{ family.name }}/{{ family.id}}/{{ child.firstName }}/{{ child.id }}/contracts/{{ contract.id }}">
                     <md-icon>search</md-icon>
-                </button>
+                </a>
+                </div>
             </md-card-title>
             <md-card-content>
-
-                <pre>
-{{ contract | json }}
-                </pre>
-
+                Du {{ contract.fromDate | date:'shortDate' }} au {{ contract.toDate | date:'shortDate' }}<br/> Semaines de
+                congés : {{ contract.holidayWeekCount }}
             </md-card-content>
         </md-card>
     </div>

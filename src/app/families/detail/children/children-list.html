@@ -13,7 +13,7 @@
                 </div>
             </md-card-title>
             <md-card-content>
-                A voir ...
+                {{ child.birthDate | date:'shortDate' }}
                 <div class="more">
                     <a class="white-link" routerLink="/families/{{ family.name }}/{{ family.id}}/{{ child.firstName }}/{{ child.id }}">
                         <md-icon>search</md-icon>
