@@ -11,6 +11,11 @@
     </md-tab>
 </md-tab-group>
 
+<span *ngIf="buttons">
+<ng2-float-btn  class="floating-fab" [mainButton]="mainButton" [buttons]="buttons" [direction]="'up'">
+</ng2-float-btn>
+</span>
+
 <!--
 <button md-fab class="floating-fab" (click)="openDialog()" color="accent" *ngIf="showAddButton">
    <md-icon>add</md-icon>

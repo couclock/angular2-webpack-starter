@@ -3,8 +3,9 @@ import { GlobalState } from '../../../../../../global-state.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { MdDialog, MdTabChangeEvent } from '@angular/material';
+import { Ng2FloatBtnComponent, Ng2FloatBtn } from 'ng2-float-btn';
 
-import { FamilyService, Family, Child, Contract } from '../../../../../../model';
+import { FamilyService, Family, Child, Contract, CONTRACT_STATUS } from '../../../../../../model';
 
 import _ from 'lodash';
 
@@ -32,7 +33,9 @@ export class ContractDetailComponent implements OnInit {
     public child: Child;
     public contract: Contract;
 
-    public showAddButton: Boolean = true;
+    public mainButton: Ng2FloatBtn;
+    public buttons: Ng2FloatBtn[];
+
     public TABS = TABS;
     public currentTabIndex: number = TABS.INFOS;
 
@@ -50,8 +53,16 @@ export class ContractDetailComponent implements OnInit {
             this.childName = params['childName'];
             this.contractId = Number(params['contractId']);
         });
-        this.getFamily();
 
+        this.mainButton = {
+            color: "accent",
+            iconName: "more_vert"
+        };
+        this.getFamily().then(
+            () => {
+                this.setButtonsToDisplay();
+            }
+        );
     }
 
     public ngOnInit(): void {
@@ -73,7 +84,7 @@ export class ContractDetailComponent implements OnInit {
                 {
                     label: this.childName + ' ' + this.familyName,
                     link: '/families/' + this.familyName + '/' + this.familyId + '/'
-                        + this.childName + '/' + this.childId
+                    + this.childName + '/' + this.childId
                 }
 
             ]
@@ -87,13 +98,6 @@ export class ContractDetailComponent implements OnInit {
     public tabChanged($event: MdTabChangeEvent) {
 
         this.currentTabIndex = $event.index;
-
-        // Hide on "Histo des présences" tab
-        if ($event.index === TABS.HISTORY) {
-            this.showAddButton = false;
-        } else {
-            this.showAddButton = true;
-        }
 
     }
 
@@ -140,5 +144,61 @@ export class ContractDetailComponent implements OnInit {
                 return oneContract.id === this.contractId;
             });
         });
+    }
+
+    /**
+     * Fill this.buttons var depending of current contract status
+     */
+    private setButtonsToDisplay(): void {
+
+        if (this.contract.status.toString() === CONTRACT_STATUS[CONTRACT_STATUS.PREPARING]) {
+            this.buttons = [
+                {
+                    color: "primary",
+                    iconName: "print",
+                    onClick: () => {
+                        alert("buton 1 clicked");
+                    }
+                },
+                {
+                    color: "warn",
+                    iconName: "delete",
+                    onClick: () => {
+                        alert("buton 2 clicked");
+                    }
+                }
+            ];
+        } else if (this.contract.status.toString() === CONTRACT_STATUS[CONTRACT_STATUS.VALIDATED]) {
+            this.buttons = [
+                {
+                    color: "warn",
+                    iconName: "delete",
+                    onClick: () => {
+                        alert("buton 2 clicked");
+                    }
+                }
+            ];
+        } else if (this.contract.status.toString() === CONTRACT_STATUS[CONTRACT_STATUS.ACTIVE]) {
+            this.buttons = [
+                {
+                    color: "warn",
+                    iconName: "stop",
+                    onClick: () => {
+                        alert("buton 2 clicked");
+                    }
+                }
+            ];
+        } else if (this.contract.status.toString() === CONTRACT_STATUS[CONTRACT_STATUS.DONE]) {
+            this.buttons = [
+                {
+                    color: "warn",
+                    iconName: "delete",
+                    onClick: () => {
+                        alert("buton 2 clicked");
+                    }
+                }
+            ];
+        }
+
     }
 }

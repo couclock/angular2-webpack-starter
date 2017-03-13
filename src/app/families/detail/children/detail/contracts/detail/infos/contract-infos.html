@@ -9,14 +9,15 @@
                 <input mdInput type="date" name="toDate" [disabled]="isDisabled('toDate')" placeholder="Date de fin" #toDate value="{{ contract.toDate }}">
             </md-input-container>
         </div>
-         <div fxLayout="row" fxLayoutAlign="space-around">
-      <md-input-container>
-        <input mdInput type="number" [disabled]="isDisabled('holidayWeekCount')" placeholder="Semaines de congés" #holidayWeekCount value="{{ contract.holidayWeekCount }}">
-      </md-input-container>
-      <md-input-container fxFlexOffset="10">
-        <input mdInput type="number" [disabled]="isDisabled('hoursPerWeek')" placeholder="Heures par semaine" #hoursPerWeek value="{{ contract.hoursPerWeek }}">
-      </md-input-container>
-    </div>
+        <div fxLayout="row" fxLayoutAlign="space-around">
+            <md-input-container>
+                <input mdInput type="number" [disabled]="isDisabled('holidayWeekCount')" placeholder="Semaines de congés" #holidayWeekCount
+                    value="{{ contract.holidayWeekCount }}">
+            </md-input-container>
+            <md-input-container fxFlexOffset="10">
+                <input mdInput type="number" [disabled]="isDisabled('hoursPerWeek')" placeholder="Heures par semaine" #hoursPerWeek value="{{ contract.hoursPerWeek }}">
+            </md-input-container>
+        </div>
     </div>
 
     <div class="right-column">
