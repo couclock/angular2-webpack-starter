@@ -4,8 +4,7 @@ import {
     ElementRef,
     ViewChild,
     Renderer,
-    forwardRef,
-    OnInit
+    forwardRef
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 

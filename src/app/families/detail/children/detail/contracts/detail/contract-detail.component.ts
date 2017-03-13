@@ -3,7 +3,7 @@ import { GlobalState } from '../../../../../../global-state.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { MdDialog, MdTabChangeEvent } from '@angular/material';
-import { Ng2FloatBtnComponent, Ng2FloatBtn } from 'ng2-float-btn';
+import { Ng2FloatBtn } from 'ng2-float-btn';
 
 import { FamilyService, Family, Child, Contract, CONTRACT_STATUS } from '../../../../../../model';
 
@@ -55,8 +55,8 @@ export class ContractDetailComponent implements OnInit {
         });
 
         this.mainButton = {
-            color: "accent",
-            iconName: "more_vert"
+            color: 'accent',
+            iconName: 'more_vert'
         };
         this.getFamily().then(
             () => {
@@ -154,47 +154,47 @@ export class ContractDetailComponent implements OnInit {
         if (this.contract.status.toString() === CONTRACT_STATUS[CONTRACT_STATUS.PREPARING]) {
             this.buttons = [
                 {
-                    color: "primary",
-                    iconName: "print",
+                    color: 'primary',
+                    iconName: 'print',
                     onClick: () => {
-                        alert("buton 1 clicked");
+                        alert('buton 1 clicked');
                     }
                 },
                 {
-                    color: "warn",
-                    iconName: "delete",
+                    color: 'warn',
+                    iconName: 'delete',
                     onClick: () => {
-                        alert("buton 2 clicked");
+                        alert('buton 2 clicked');
                     }
                 }
             ];
         } else if (this.contract.status.toString() === CONTRACT_STATUS[CONTRACT_STATUS.VALIDATED]) {
             this.buttons = [
                 {
-                    color: "warn",
-                    iconName: "delete",
+                    color: 'warn',
+                    iconName: 'delete',
                     onClick: () => {
-                        alert("buton 2 clicked");
+                        alert('buton 2 clicked');
                     }
                 }
             ];
         } else if (this.contract.status.toString() === CONTRACT_STATUS[CONTRACT_STATUS.ACTIVE]) {
             this.buttons = [
                 {
-                    color: "warn",
-                    iconName: "stop",
+                    color: 'warn',
+                    iconName: 'stop',
                     onClick: () => {
-                        alert("buton 2 clicked");
+                        alert('buton 2 clicked');
                     }
                 }
             ];
         } else if (this.contract.status.toString() === CONTRACT_STATUS[CONTRACT_STATUS.DONE]) {
             this.buttons = [
                 {
-                    color: "warn",
-                    iconName: "delete",
+                    color: 'warn',
+                    iconName: 'delete',
                     onClick: () => {
-                        alert("buton 2 clicked");
+                        alert('buton 2 clicked');
                     }
                 }
             ];
