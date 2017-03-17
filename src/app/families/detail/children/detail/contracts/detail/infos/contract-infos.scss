@@ -23,4 +23,18 @@
             }
         }
     }
+    .planning {
+        .day-line {
+            label {
+                white-space: nowrap;
+                padding-right: 20px;
+                vertical-align: bottom;
+                text-align: right;
+            }
+        }
+    }
+}
+
+h3 {
+    padding-left: 10px;
 }
