@@ -2,6 +2,9 @@
 .contract-infos {
     .left-column {
         padding: 10px;
+        md-input-container {
+            width: 200px;
+        }
     }
     .right-column {
         padding: 10px;
@@ -33,8 +36,4 @@
             }
         }
     }
-}
-
-h3 {
-    padding-left: 10px;
 }

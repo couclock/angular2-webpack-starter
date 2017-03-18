@@ -1,24 +1,94 @@
 <div fxLayout="column" class="contract-infos" *ngIf="contract">
     <div fxLayout="row">
-
         <div class="left-column" fxFlex>
-            <div fxLayout="row" fxLayoutAlign="space-around">
+            <div fxLayout="row" fxLayoutAlign="center">
                 <md-input-container>
-                    <input mdInput type="date" name="fromDate" [disabled]="isDisabled('fromDate')" placeholder="Date de début" #fromDate value="{{ contract.fromDate }}">
+                    <input mdInput type="date" name="fromDate" [disabled]="isDisabled('fromDate')" placeholder="Date de début" #fromDate [(ngModel)]="contract.fromDate" (blur)="save()">
                 </md-input-container>
                 <md-input-container fxFlexOffset="10">
-                    <input mdInput type="date" name="toDate" [disabled]="isDisabled('toDate')" placeholder="Date de fin" #toDate value="{{ contract.toDate }}">
+                    <input mdInput type="date" name="toDate" [disabled]="isDisabled('toDate')" placeholder="Date de fin" #toDate [(ngModel)]="contract.toDate"  (blur)="save()">
                 </md-input-container>
             </div>
-            <div fxLayout="row" fxLayoutAlign="space-around">
+            <div fxLayout="row" fxLayoutAlign="center">
                 <md-input-container>
                     <input mdInput type="number" [disabled]="isDisabled('holidayWeekCount')" placeholder="Semaines de congés" #holidayWeekCount
-                        value="{{ contract.holidayWeekCount }}">
+                        [(ngModel)]="contract.holidayWeekCount"  (blur)="save()">
                 </md-input-container>
                 <md-input-container fxFlexOffset="10">
-                    <input mdInput type="number" [disabled]="isDisabled('hoursPerWeek')" placeholder="Heures par semaine" #hoursPerWeek value="{{ contract.hoursPerWeek }}">
+                    <input mdInput type="number" [disabled]="isDisabled('hoursPerWeek')" placeholder="Heures par semaine" #hoursPerWeek [(ngModel)]="contract.hoursPerWeek" (blur)="save()">
                 </md-input-container>
             </div>
+            <div fxLayout="row">
+                <h3 fxFlexOffset="10">Planning d'accueil</h3>
+            </div>
+            <div fxLayout fxLayoutAlign="center" *ngIf="!contract.planning">
+                <button md-raised-button color="primary" (click)="initPlanning()">
+                    Définir le planning
+                </button>
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------------------------- -->
+            <!-- Planning -->
+            <div class="planning" fxLayout="column" fxLayoutAlign="start" *ngIf="contract.planning">
+
+                <div class="day-line" fxLayout="row" fxLayoutAlign="center">
+                    <label fxFlex="15">Lundi</label>
+                    <md-input-container fxFlexOffset="2" fxFlex="10" class="input-no-margin">
+                        <input mdInput type="time" name="fromDate" placeholder="Heure d'arrivée" #fromDate value="{{ contract.planning[DAY_OF_WEEK.MONDAY].startTime }}">
+                    </md-input-container>
+                    <md-input-container fxFlexOffset="5" fxFlex="10" class="input-no-margin">
+                        <input mdInput type="time" name="toDate" placeholder="Heure de départ" #toDate value="{{ contract.planning[DAY_OF_WEEK.MONDAY].endTime }}">
+                    </md-input-container>
+                </div>
+
+                <div class="day-line" fxLayout="row" fxLayoutAlign="center">
+                    <label fxFlex="15">Mardi</label>
+                    <md-input-container fxFlexOffset="2" fxFlex="10" class="input-no-margin">
+                        <input mdInput type="time" name="fromDate" #fromDate value="{{ contract.fromDate }}">
+                    </md-input-container>
+                    <md-input-container fxFlexOffset="5" fxFlex="10" class="input-no-margin">
+                        <input mdInput type="time" name="toDate" #toDate value="{{ contract.toDate }}">
+                    </md-input-container>
+                </div>
+
+                <div class="day-line" fxLayout="row" fxLayoutAlign="center">
+                    <label fxFlex="15">Mercredi</label>
+                    <md-input-container fxFlexOffset="2" fxFlex="10" class="input-no-margin">
+                        <input mdInput type="time" name="fromDate" #fromDate value="{{ contract.fromDate }}">
+                    </md-input-container>
+                    <md-input-container fxFlexOffset="5" fxFlex="10" class="input-no-margin">
+                        <input mdInput type="time" name="toDate" #toDate value="{{ contract.toDate }}">
+                    </md-input-container>
+                </div>
+
+                <div class="day-line" fxLayout="row" fxLayoutAlign="center">
+                    <label fxFlex="15">Jeudi</label>
+                    <md-input-container fxFlexOffset="2" fxFlex="10" class="input-no-margin">
+                        <input mdInput type="time" name="fromDate" #fromDate value="{{ contract.fromDate }}">
+                    </md-input-container>
+                    <md-input-container fxFlexOffset="5" fxFlex="10" class="input-no-margin">
+                        <input mdInput type="time" name="toDate" #toDate value="{{ contract.toDate }}">
+                    </md-input-container>
+                </div>
+
+                <div class="day-line" fxLayout="row" fxLayoutAlign="center">
+                    <label fxFlex="15">Vendredi</label>
+                    <md-input-container fxFlexOffset="2" fxFlex="10" class="input-no-margin">
+                        <input mdInput type="time" name="fromDate" #fromDate value="{{ contract.fromDate }}">
+                    </md-input-container>
+                    <md-input-container fxFlexOffset="5" fxFlex="10" class="input-no-margin">
+                        <input mdInput type="time" name="toDate" #toDate value="{{ contract.toDate }}">
+                    </md-input-container>
+                </div>
+
+            </div>
+
+            <div fxLayout fxLayoutAlign="center" *ngIf="contract.planning">
+                <button md-raised-button color="warn" (click)="deletePlanning()">
+                    Supprimer ce planning
+                </button>
+            </div>
+
         </div>
 
         <div class="right-column">
@@ -34,60 +104,7 @@
 
     </div>
 
-    <h3>Planning d'accueil</h3>
 
-    <div class="planning" fxLayout="column" fxLayoutAlign="start">
 
-        <div class="day-line" fxLayout="row" fxLayoutAlign="center">
-            <label fxFlex="15">Lundi</label>
-            <md-input-container fxFlexOffset="2" fxFlex="10" class="input-no-margin">
-                <input mdInput type="time" name="fromDate" placeholder="Heure d'arrivée" #fromDate value="{{ contract.fromDate }}">
-            </md-input-container>
-            <md-input-container fxFlexOffset="5" fxFlex="10" class="input-no-margin">
-                <input mdInput type="time" name="toDate" placeholder="Heure de départ" #toDate value="{{ contract.toDate }}">
-            </md-input-container>
-        </div>
-
-        <div class="day-line" fxLayout="row" fxLayoutAlign="center">
-            <label fxFlex="15">Mardi</label>
-            <md-input-container fxFlexOffset="2" fxFlex="10" class="input-no-margin">
-                <input mdInput type="time" name="fromDate" #fromDate value="{{ contract.fromDate }}">
-            </md-input-container>
-            <md-input-container fxFlexOffset="5" fxFlex="10" class="input-no-margin">
-                <input mdInput type="time" name="toDate" #toDate value="{{ contract.toDate }}">
-            </md-input-container>
-        </div>
-
-        <div class="day-line" fxLayout="row" fxLayoutAlign="center">
-            <label fxFlex="15">Mercredi</label>
-            <md-input-container fxFlexOffset="2" fxFlex="10" class="input-no-margin">
-                <input mdInput type="time" name="fromDate" #fromDate value="{{ contract.fromDate }}">
-            </md-input-container>
-            <md-input-container fxFlexOffset="5" fxFlex="10" class="input-no-margin">
-                <input mdInput type="time" name="toDate" #toDate value="{{ contract.toDate }}">
-            </md-input-container>
-        </div>
-
-         <div class="day-line" fxLayout="row" fxLayoutAlign="center">
-            <label fxFlex="15">Jeudi</label>
-            <md-input-container fxFlexOffset="2" fxFlex="10" class="input-no-margin">
-                <input mdInput type="time" name="fromDate" #fromDate value="{{ contract.fromDate }}">
-            </md-input-container>
-            <md-input-container fxFlexOffset="5" fxFlex="10" class="input-no-margin">
-                <input mdInput type="time" name="toDate" #toDate value="{{ contract.toDate }}">
-            </md-input-container>
-        </div>
-
-         <div class="day-line" fxLayout="row" fxLayoutAlign="center">
-            <label fxFlex="15">Vendredi</label>
-            <md-input-container fxFlexOffset="2" fxFlex="10" class="input-no-margin">
-                <input mdInput type="time" name="fromDate" #fromDate value="{{ contract.fromDate }}">
-            </md-input-container>
-            <md-input-container fxFlexOffset="5" fxFlex="10" class="input-no-margin">
-                <input mdInput type="time" name="toDate" #toDate value="{{ contract.toDate }}">
-            </md-input-container>
-        </div>
-
-    </div>
 
 </div>

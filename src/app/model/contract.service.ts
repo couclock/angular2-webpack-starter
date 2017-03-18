@@ -7,7 +7,7 @@ import { Contract } from '.';
 
 @Injectable()
 export class ContractService {
-    private contractsUrl = 'app/contracts';  // URL to web api
+    private contractsUrl = '/mv3/contracts';  // URL to web api
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) {
