@@ -19,7 +19,7 @@ export class ContractService {
         return this.http
             .put(url, JSON.stringify(contract), { headers: this.headers })
             .toPromise()
-            .then(() => contract as Contract)
+            .then((res) => res.json() as Contract)
             .catch(this.handleError);
     }
 

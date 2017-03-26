@@ -22,6 +22,7 @@
     "no-forward-ref": false,
     "no-input-rename": true,
     "no-output-rename": true,
+    "no-namespace": false,
     "pipe-naming": [true, "camelCase", "my"],
     "templates-use-public": true,
     "use-host-property-decorator": true,
@@ -37,7 +38,7 @@
     ],
     "max-line-length": [
       true,
-      100
+      120
     ],
     "no-string-literal": false,
     "no-use-before-declare": true,

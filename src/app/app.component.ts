@@ -10,6 +10,8 @@ import {
 import { GlobalState } from './global-state.service';
 import { MdSidenav } from '@angular/material';
 
+import * as moment from 'moment';
+
 /*
  * App Component
  * Top Level Component
@@ -40,6 +42,10 @@ export class AppComponent implements OnInit {
 
   public ngOnInit() {
     console.log('Initial App State');
+
+    // Init default locale to get right date related labels
+    moment.locale('fr');
+
   }
 
 }
