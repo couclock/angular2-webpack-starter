@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 
-import { MdSnackBar } from '@angular/material';
+import { MdSnackBar, MdDialog, MdDialogConfig } from '@angular/material';
 
+import { IncompleteContractDialogComponent } from './incomplete-contract.component';
 import {
     Contract, ChildService, CONTRACT_STATUS, ContractService, DAY_OF_WEEK, ContractPlanningDay
 } from '../../../../../../../model';
@@ -24,10 +25,26 @@ export class ContractInfosComponent {
     constructor(
         private childService: ChildService,
         private contractService: ContractService,
-        private snackBar: MdSnackBar) {
+        private snackBar: MdSnackBar,
+        private dialog: MdDialog) {
 
         console.log('constructor : ', this.contract);
 
+    }
+
+    public explainIncompleteContract() {
+
+        let config: MdDialogConfig = {
+            data: {
+                contract: this.contract
+            }
+        };
+
+        let dialogRef = this.dialog.open(IncompleteContractDialogComponent, config);
+
+        dialogRef.afterClosed().subscribe(() => {
+            console.log('close');
+        });
     }
 
     public save(): Promise<Contract> {

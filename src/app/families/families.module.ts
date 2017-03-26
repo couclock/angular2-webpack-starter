@@ -37,7 +37,7 @@ import {
 } from './detail/children/detail/contracts';
 
 import {
-  ContractDetailComponent, ContractInfosComponent
+  ContractDetailComponent, ContractInfosComponent, IncompleteContractDialogComponent
 } from './detail/children/detail/contracts/detail';
 
 export const ROUTES: Routes = [
@@ -77,7 +77,8 @@ export const ROUTES: Routes = [
     ChildContractsComponent,
     AddContractDialogComponent,
     ContractDetailComponent,
-    ContractInfosComponent
+    ContractInfosComponent,
+    IncompleteContractDialogComponent
   ],
   entryComponents: [
     AddFamilyDialogComponent,
@@ -85,7 +86,8 @@ export const ROUTES: Routes = [
     AddParentDialogComponent,
     AddContactDialogComponent,
     DeleteChildDialogComponent,
-    AddContractDialogComponent
+    AddContractDialogComponent,
+    IncompleteContractDialogComponent
   ]
 })
 export class FamiliesModule { }

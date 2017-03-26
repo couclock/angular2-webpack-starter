@@ -25,6 +25,13 @@
                 background-color: mat-color($contract-done, 700);
             }
         }
+        md-card {
+            margin-top: 30px;
+            md-icon {
+                vertical-align: middle;
+                cursor: pointer;
+            }
+        }
     }
     .planning {
         .day-line {

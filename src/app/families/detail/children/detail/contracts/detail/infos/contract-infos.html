@@ -1,21 +1,27 @@
 <div fxLayout="column" class="contract-infos" *ngIf="contract">
     <div fxLayout="row">
         <div class="left-column" fxFlex>
+
+            <!-- --------------------------------------------------------------------------------------------------------------- -->
+            <!-- Metadata -->
             <div fxLayout="row" fxLayoutAlign="center">
                 <md-input-container>
-                    <input mdInput type="date" name="fromDate" [disabled]="isDisabled('fromDate')" placeholder="Date de début" #fromDate [(ngModel)]="contract.fromDate" (blur)="save()">
+                    <input mdInput type="date" name="fromDate" [disabled]="isDisabled('fromDate')" placeholder="Date de début" #fromDate [(ngModel)]="contract.fromDate"
+                        (blur)="save()">
                 </md-input-container>
                 <md-input-container fxFlexOffset="10">
-                    <input mdInput type="date" name="toDate" [disabled]="isDisabled('toDate')" placeholder="Date de fin" #toDate [(ngModel)]="contract.toDate"  (blur)="save()">
+                    <input mdInput type="date" name="toDate" [disabled]="isDisabled('toDate')" placeholder="Date de fin" #toDate [(ngModel)]="contract.toDate"
+                        (blur)="save()">
                 </md-input-container>
             </div>
             <div fxLayout="row" fxLayoutAlign="center">
                 <md-input-container>
                     <input mdInput type="number" [disabled]="isDisabled('holidayWeekCount')" placeholder="Semaines de congés" #holidayWeekCount
-                        [(ngModel)]="contract.holidayWeekCount"  (blur)="save()">
+                        [(ngModel)]="contract.holidayWeekCount" (blur)="save()">
                 </md-input-container>
                 <md-input-container fxFlexOffset="10">
-                    <input mdInput type="number" [disabled]="isDisabled('hoursPerWeek')" placeholder="Heures par semaine" #hoursPerWeek [(ngModel)]="contract.hoursPerWeek" (blur)="save()">
+                    <input mdInput type="number" [disabled]="isDisabled('hoursPerWeek')" placeholder="Heures par semaine" #hoursPerWeek [(ngModel)]="contract.hoursPerWeek"
+                        (blur)="save()">
                 </md-input-container>
             </div>
             <div fxLayout="row">
@@ -35,12 +41,12 @@
                 <div class="day-line" fxLayout="row" fxLayoutAlign="center" *ngFor="let oneDay of contract.planning; let $index = index;trackBy:customTrackBy">
                     <label fxFlex="15">{{ getDayLabel(oneDay.dayOfWeek) }}</label>
                     <md-input-container fxFlexOffset="2" fxFlex="10" class="input-no-margin">
-                        <input mdInput type="time" placeholder="{{ ($index === 0)?'Heure d\'arrivée':'' }}" 
-                        [(ngModel)]="oneDay.startTime" (blur)="save()" min="07:30" max="18:30" step="1800">
+                        <input mdInput type="time" placeholder="{{ ($index === 0)?'Heure d\'arrivée':'' }}" [(ngModel)]="oneDay.startTime" (blur)="save()"
+                            min="07:30" max="18:30" step="1800">
                     </md-input-container>
                     <md-input-container fxFlexOffset="5" fxFlex="10" class="input-no-margin">
-                        <input mdInput type="time" placeholder="{{ ($index === 0)?'Heure de départ':'' }}" 
-                        [(ngModel)]="oneDay.endTime" (blur)="save()" min="07:30" max="18:30" step="1800">
+                        <input mdInput type="time" placeholder="{{ ($index === 0)?'Heure de départ':'' }}" [(ngModel)]="oneDay.endTime" (blur)="save()"
+                            min="07:30" max="18:30" step="1800">
                     </md-input-container>
                 </div>
 
@@ -55,6 +61,9 @@
         </div>
 
         <div class="right-column">
+
+            <!-- --------------------------------------------------------------------------------------------------------------- -->
+            <!-- Contract status -->
             <md-chip-list>
                 <md-chip class="contract-{{ contract.status | lowercase }}" selected="true">
                     <span *ngIf="contract.status === 'PREPARING'">En préparation</span>
@@ -63,6 +72,25 @@
                     <span *ngIf="contract.status === 'DONE'">Terminé</span>
                 </md-chip>
             </md-chip-list>
+
+            <!-- --------------------------------------------------------------------------------------------------------------- -->
+            <!-- Monthly cost -->
+
+            <md-card>
+                  <md-card-header>
+                <md-card-title>Mensualité</md-card-title>
+                <md-card-subtitle>
+                    <div *ngIf="!contract.monthlyAmount">
+                        <i>Dossier incomplet&nbsp;</i>
+                        <md-icon (click)="explainIncompleteContract()">info</md-icon>
+                    </div>
+                    <span *ngIf="contract.monthlyAmount">
+                    <b>{{ contract.monthlyAmount }} €/mois</b>
+                    </span>
+                </md-card-subtitle>
+                  </md-card-header>
+            </md-card>
+
         </div>
 
     </div>

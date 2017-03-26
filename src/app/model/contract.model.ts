@@ -16,6 +16,7 @@ export class Contract {
     public pricePerMonth?: number;
     public holidayWeekCount?: number;
     public hoursPerWeek?: number;
+    public monthlyAmount?: number;
     public planning?: ContractPlanningDay[];
 
 }

@@ -23,6 +23,15 @@ export class ContractService {
             .catch(this.handleError);
     }
 
+    public explainMissingData(id: number): Promise<string[]> {
+        const url = `${this.contractsUrl}/${id}/explain`;
+        return this.http
+            .get(url)
+            .toPromise()
+            .then((res) => res.json() as string[])
+            .catch(this.handleError);
+    }
+
     private handleError(error: any): Promise<any> {
         let errorObj = error.json();
         return Promise.reject(errorObj);
