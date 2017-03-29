@@ -34,7 +34,7 @@ import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 
-import { FamilyService } from './model/family.service';
+import { FamilyService, ParentService } from './model';
 import { ContactService } from './model/contact.service';
 import { ChildService } from './model/child.service';
 import { ContractService } from './model/contract.service';
@@ -85,7 +85,8 @@ type StoreType = {
     ChildService,
     ContractService,
     ContactService,
-    GlobalState
+    GlobalState,
+    ParentService
   ]
 })
 export class AppModule {

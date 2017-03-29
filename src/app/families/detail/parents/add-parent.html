@@ -1,15 +1,39 @@
-<h1 md-dialog-title>Nouveau parent</h1>
-<form novalidate>
+<h1 md-dialog-title *ngIf="parent && parent.id">
+  Parent
+</h1>
+<h1 md-dialog-title *ngIf="!parent || !parent.id">
+  Nouveau parent
+</h1>
+
+<form novalidate >
   <div md-dialog-content>
-    <md-input-container>
-      <input mdInput name="name" placeholder="Nom" #name value="{{ family.name }}">
-    </md-input-container>
-    <md-input-container>
-      <input mdInput name="firstName" placeholder="Prénom" #firstName>
-    </md-input-container>
+    <div fxLayout="row">
+      <md-input-container>
+        <input mdInput name="name" placeholder="Nom" [(ngModel)]="parent.name">
+      </md-input-container>
+      <md-input-container>
+        <input mdInput name="firstName" placeholder="Prénom" [(ngModel)]="parent.firstName">
+      </md-input-container>
+    </div>
+    <div fxLayout="row">
+      <md-input-container>
+        <input mdInput name="phoneNumber" placeholder="Téléphone" [(ngModel)]="parent.phoneNumber">
+      </md-input-container>
+      <md-input-container>
+        <input mdInput name="email" placeholder="Email" [(ngModel)]="parent.email">
+      </md-input-container>
+    </div>
   </div>
-  <div md-dialog-actions fxLayout="row" fxLayoutAlign="end center">
-    <button type="button" md-button (click)="dialogRef.close()">Annuler</button> &nbsp;&nbsp;
-    <button type="submit" md-raised-button (click)="saveNewParent(name.value, firstName.value)" color="accent">Enregistrer</button>
+
+  <div md-dialog-actions fxLayout="row" fxLayoutAlign="start center">
+    <div fxFlex fxLayout="start">
+      <button type="button" md-raised-button (click)="deleteParent(parent)" color="warn" *ngIf="parent && parent.id">
+        <md-icon>delete</md-icon>
+      </button>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+      <button type="button" md-button (click)="dialogRef.close()">Annuler</button> &nbsp;&nbsp;
+      <button type="submit" md-raised-button (click)="saveParent()" color="accent">Enregistrer</button>
+    </div>
   </div>
 </form>
