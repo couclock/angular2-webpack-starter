@@ -6,10 +6,12 @@ import { Family } from '../../../model/family.model';
 import { Parent } from '../../../model/parent.model';
 
 import _ from 'lodash';
+import * as moment from 'moment';
 
 @Component({
     selector: 'add-parent',
     templateUrl: './add-parent.html',
+    styles: [require('./add-parent.scss')]
 })
 export class AddParentDialogComponent {
 
@@ -17,6 +19,8 @@ export class AddParentDialogComponent {
     public parent: Parent;
 
     public deletingParent = false;
+    public incomeYears: number[] = [];
+    public selectedYear: number;
 
     constructor(
         private familyService: FamilyService,
@@ -28,13 +32,19 @@ export class AddParentDialogComponent {
         } else {
             this.parent = new Parent();
             this.parent.name = this.family.name;
+            this.parent.income = new Map();
         }
+        for (let i = 1; i < 5; i++) {
+            this.incomeYears.push(moment().subtract(i, 'years').year());
+        }
+
     }
 
     /**
      * Save parent : send to backend
      */
     public saveParent(): void {
+        console.log('saveParent : ', this.parent);
 
         if (this.parent && this.parent.id) {
             this.parentService.update(this.parent).then((newParent) => {

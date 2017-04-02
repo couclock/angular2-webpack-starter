@@ -23,6 +23,19 @@
         <input mdInput name="email" placeholder="Email" [(ngModel)]="parent.email">
       </md-input-container>
     </div>
+    <div class="as-placeholder">
+      Revenu net imposable
+    </div>
+    <div fxLayout="row">
+      <md-select placeholder="Année" fxFlex="50" name="selectedYear" [(ngModel)]="selectedYear">
+        <md-option *ngFor="let year of incomeYears" [value]="year">
+          {{ year }}
+        </md-option>
+      </md-select>
+      <md-input-container fxFlex="50">
+        <input mdInput type="number" name="income" placeholder="Revenu" [(ngModel)]="parent.income[selectedYear]">
+      </md-input-container>
+    </div>
   </div>
 
   <div md-dialog-actions fxLayout="row" fxLayoutAlign="start center">
