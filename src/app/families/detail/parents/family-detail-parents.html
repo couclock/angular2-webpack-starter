@@ -1,14 +1,23 @@
 <div class="family-detail-parents" *ngIf="family" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
 
-    <div class="family-detail-parent" *ngFor="let parent of family.parents" fxFlex="33">
+    <div class="family-detail-parent" *ngFor="let parent of family.parents; let idx = index;" fxFlex="33">
         <md-card>
-            <md-card-title fxLayout="row"  fxLayoutAlign="center center">
-                    {{ parent.name + ' ' + parent.firstName }}
+            <md-card-title>
+                {{ parent.name + ' ' + parent.firstName }}
+                <button mb-button class="more" (click)="editParent(idx, parent)">
+                    <md-icon>edit</md-icon>
+                </button>
             </md-card-title>
             <md-card-content>
-                A voir ...
-                <div class="more">
-                        <md-icon>search</md-icon>
+                <div fxLayout="row">
+                    <div *ngIf="parent.phoneNumber" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                        <md-icon>contact_phone</md-icon>
+                        <div nowrap>{{ parent.phoneNumber }}</div>
+                    </div>
+                    <div *ngIf="parent.email" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                        <md-icon>contact_mail</md-icon>
+                        <div>{{ parent.email }}</div>
+                    </div>
                 </div>
             </md-card-content>
         </md-card>

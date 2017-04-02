@@ -5,7 +5,7 @@
   Nouveau parent
 </h1>
 
-<form novalidate >
+<form novalidate *ngIf="!deletingParent">
   <div md-dialog-content>
     <div fxLayout="row">
       <md-input-container>
@@ -27,13 +27,23 @@
 
   <div md-dialog-actions fxLayout="row" fxLayoutAlign="start center">
     <div fxFlex fxLayout="start">
-      <button type="button" md-raised-button (click)="deleteParent(parent)" color="warn" *ngIf="parent && parent.id">
+      <button type="button" md-raised-button (click)="askToDeleteParent()" color="warn" *ngIf="parent && parent.id">
         <md-icon>delete</md-icon>
       </button>
     </div>
     <div fxLayout="row" fxLayoutAlign="space-around center">
-      <button type="button" md-button (click)="dialogRef.close()">Annuler</button> &nbsp;&nbsp;
+      <button type="button" md-button (click)="dialogRef.close({})">Annuler</button> &nbsp;&nbsp;
       <button type="submit" md-raised-button (click)="saveParent()" color="accent">Enregistrer</button>
     </div>
+  </div>
+</form>
+
+<form novalidate *ngIf="deletingParent">
+  <div md-dialog-content class="are-u-sure">
+    Etes-vous sûr de vouloir supprimer le parent {{ parent.firstName + ' ' + parent.name }} ?
+  </div>
+  <div md-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button md-button (click)="cancelDelete()">Annuler</button> &nbsp;&nbsp;
+    <button md-raised-button (click)="deleteParent()" color="warn">Supprimer</button>
   </div>
 </form>

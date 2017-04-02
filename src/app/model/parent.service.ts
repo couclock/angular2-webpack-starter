@@ -15,13 +15,13 @@ export class ParentService {
     /**
      * Update parent
      */
-    public update(parent: Parent): Promise<void> {
+    public update(parent: Parent): Promise<Parent> {
         const url = `${this.parentsUrl}/${parent.id}`;
 
         return this.http
             .put(url, JSON.stringify(parent), { headers: this.headers })
             .toPromise()
-            .then(() => null)
+            .then((res) => res.json() as Parent)
             .catch(this.handleError);
     }
 
