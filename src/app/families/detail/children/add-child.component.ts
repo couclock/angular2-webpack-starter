@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { Component, Inject } from '@angular/core';
+import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
 import { FamilyService } from '../../../model/family.service';
 import { Family } from '../../../model/family.model';
@@ -15,8 +15,9 @@ export class AddChildDialogComponent {
 
     constructor(
         private familyService: FamilyService,
-        public dialogRef: MdDialogRef<AddChildDialogComponent>) {
-        this.family = dialogRef.config.data.family;
+        public dialogRef: MdDialogRef<AddChildDialogComponent>,
+        @Inject(MD_DIALOG_DATA) private data: any) {
+        this.family = data.family;
     }
 
     /**

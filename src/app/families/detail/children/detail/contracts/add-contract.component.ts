@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { MdDialogRef, MdSnackBar } from '@angular/material';
+import { Component, Input, Inject } from '@angular/core';
+import { MdDialogRef, MdSnackBar, MD_DIALOG_DATA } from '@angular/material';
 
 import { Child, Contract, CONTRACT_STATUS, ChildService } from '../../../../../model';
 
@@ -17,8 +17,9 @@ export class AddContractDialogComponent {
 
     constructor(private childService: ChildService,
         public dialogRef: MdDialogRef<AddContractDialogComponent>,
-        private snackBar: MdSnackBar) {
-        this.child = dialogRef.config.data.child;
+        private snackBar: MdSnackBar,
+        @Inject(MD_DIALOG_DATA) private data: any) {
+        this.child = data.child;
     }
 
     /**

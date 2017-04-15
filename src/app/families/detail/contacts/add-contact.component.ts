@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { Component, Inject } from '@angular/core';
+import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
 import { FamilyService } from '../../../model/family.service';
 import { ContactService } from '../../../model/contact.service';
@@ -18,10 +18,11 @@ export class AddContactDialogComponent {
     constructor(
         private familyService: FamilyService,
         private contactService: ContactService,
-        public dialogRef: MdDialogRef<AddContactDialogComponent>) {
-        this.family = dialogRef.config.data.family;
-        if (dialogRef.config.data.contact && dialogRef.config.data.contact.id) {
-            this.contact = dialogRef.config.data.contact;
+        public dialogRef: MdDialogRef<AddContactDialogComponent>,
+        @Inject(MD_DIALOG_DATA) private data: any) {
+        this.family = data.family;
+        if (data.contact && data.contact.id) {
+            this.contact = data.contact;
         }
     }
 

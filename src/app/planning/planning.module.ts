@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { MaterialModule } from '@angular/material';
+import { Mv3MaterialModule } from '../common';
 
 import { PlanningComponent } from './planning.component';
 
@@ -8,7 +8,7 @@ import { PlanningComponent } from './planning.component';
     PlanningComponent
   ],
   imports: [
-    MaterialModule
+    Mv3MaterialModule
   ]
 })
 export class PlanningModule { }

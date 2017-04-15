@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
 import { Contract, ContractService } from '../../../../../../../model';
 
@@ -14,8 +14,9 @@ export class IncompleteContractDialogComponent implements OnInit {
     public messages: string[] = [];
 
     constructor(public dialogRef: MdDialogRef<IncompleteContractDialogComponent>,
-            private contractService: ContractService) {
-        this.contract = dialogRef.config.data.contract;
+            private contractService: ContractService,
+            @Inject(MD_DIALOG_DATA) private data: any) {
+        this.contract = data.contract;
     }
 
     public ngOnInit() {

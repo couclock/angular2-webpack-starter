@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { MaterialModule } from '@angular/material';
+import { Mv3MaterialModule } from './mv3material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { NavbarComponent } from './navbar/navbar.component';
@@ -10,7 +10,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   imports: [
-    MaterialModule,
+    Mv3MaterialModule,
     FlexLayoutModule,
     CommonModule,
     RouterModule

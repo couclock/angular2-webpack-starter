@@ -15,10 +15,10 @@ import {
   RouterModule,
   PreloadAllModules
 } from '@angular/router';
-import { Mv3CommonModule } from './common/common.module';
-import { MaterialModule } from '@angular/material';
+
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { Mv3CommonModule, Mv3MaterialModule } from './common';
 import { FamiliesModule } from './families';
 import { PlanningModule } from './planning';
 
@@ -73,9 +73,9 @@ type StoreType = {
     FormsModule,
     HttpModule,
     Mv3CommonModule,
+    Mv3MaterialModule,
     FamiliesModule,
     PlanningModule,
-    MaterialModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })

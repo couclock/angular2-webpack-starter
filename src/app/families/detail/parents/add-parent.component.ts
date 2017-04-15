@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { Component, Inject } from '@angular/core';
+import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
 import { FamilyService, ParentService } from '../../../model';
 import { Family } from '../../../model/family.model';
@@ -25,10 +25,11 @@ export class AddParentDialogComponent {
     constructor(
         private familyService: FamilyService,
         private parentService: ParentService,
-        public dialogRef: MdDialogRef<AddParentDialogComponent>) {
-        this.family = dialogRef.config.data.family;
-        if (dialogRef.config.data.parent && dialogRef.config.data.parent.id) {
-            this.parent = _.clone(dialogRef.config.data.parent);
+        public dialogRef: MdDialogRef<AddParentDialogComponent>,
+        @Inject(MD_DIALOG_DATA) private data: any) {
+        this.family = data.family;
+        if (data.parent && data.parent.id) {
+            this.parent = _.clone(data.parent);
         } else {
             this.parent = new Parent();
             this.parent.name = this.family.name;

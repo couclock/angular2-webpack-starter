@@ -3,7 +3,7 @@
 @import 'variables';
 
 // @import '~@angular/material/core/theming/prebuilt/deeppurple-amber.scss';
-@import '~@angular/material/core/theming/all-theme';
+@import '~@angular/material/_theming.scss';
 @include mat-core();
 
 $app-primary: mat-palette($mat-blue-grey);

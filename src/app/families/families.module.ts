@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { Ng2FloatBtnModule } from 'ng2-float-btn';
 import {
@@ -11,7 +10,7 @@ import {
 } from '@angular/router';
 import { Md2Module } from 'md2';
 
-import { Mv3CommonModule } from '../common/common.module';
+import { Mv3CommonModule, Mv3MaterialModule } from '../common';
 
 import { FamiliesComponent } from './families.component';
 import { AddFamilyDialogComponent } from './add-family.component';
@@ -53,7 +52,7 @@ export const ROUTES: Routes = [
   imports: [
     CommonModule,
     FormsModule,
-    MaterialModule,
+    Mv3MaterialModule,
     FlexLayoutModule,
     Ng2FloatBtnModule,
     Mv3CommonModule,

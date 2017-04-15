@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { Component, Inject } from '@angular/core';
+import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
 import { Child, ChildService } from '../../../../model';
 
@@ -14,8 +14,9 @@ export class DeleteChildDialogComponent {
 
     constructor(
         private childService: ChildService,
-        public dialogRef: MdDialogRef<DeleteChildDialogComponent>) {
-        this.child = dialogRef.config.data.child;
+        public dialogRef: MdDialogRef<DeleteChildDialogComponent>,
+        @Inject(MD_DIALOG_DATA) private data: any) {
+        this.child = data.child;
     }
 
     /**
