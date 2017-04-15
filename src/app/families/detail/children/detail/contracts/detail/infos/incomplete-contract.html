@@ -1,15 +1,16 @@
 <h1 md-dialog-title>A compléter pour évaluer la mensualité</h1>
 
-  <div md-dialog-content>
+<div md-dialog-content>
 
-    TRACE
-    <pre>
-{{ messages | json}}
-    </pre>
+  <md-list>
+    <md-list-item *ngFor="let message of messages">
+      {{ message }}
+      </md-list-item>
+  </md-list>
 
+</div>
+<div md-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+  <div>
+    <button type="button" md-button (click)="dialogRef.close()">Fermer</button>
   </div>
-  <div md-dialog-actions fxLayout="row" fxLayoutAlign="end center">
-    <div >
-      <button type="button" md-button (click)="dialogRef.close()">Fermer</button>
-    </div>
-  </div>
+</div>
