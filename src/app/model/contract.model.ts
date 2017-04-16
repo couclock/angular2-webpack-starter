@@ -9,6 +9,12 @@ export const CONTRACT_STATUS = {
     ACTIVE: 'ACTIVE' as CONTRACT_STATUS,
     DONE: 'DONE' as CONTRACT_STATUS
 };
+export const CONTRACT_STATUS_ORDER = {
+    PREPARING: 0,
+    VALIDATED: 1,
+    ACTIVE: 2,
+    DONE: 3
+}
 
 export class Contract {
     public id?: number;

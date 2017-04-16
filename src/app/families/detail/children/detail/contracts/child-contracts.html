@@ -1,6 +1,6 @@
 <div id="child-contracts" class="child-contracts" *ngIf="child" fxLayout="row" fxLayoutAlign="center" fxLayoutWrap="wrap">
 
-    <div class="child-contract" fxFlex="33%" *ngFor="let contract of child.contracts; let idx = index;">
+    <div class="child-contract" fxFlex="33%" *ngFor="let contract of orderedContractList; let idx = index;">
         <md-card class="contract-{{ contract.status | lowercase }}">
             <md-card-title>
                 <span *ngIf="contract.status === 'PREPARING'">En préparation</span>
