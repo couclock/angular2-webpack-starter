@@ -7,4 +7,6 @@ export class Family {
     public children?: Child[];
     public parents?: Parent[];
     public contacts?: Contact[];
+    public childrenCount?: number;
+    public disabledChildrenCount?: number;
 }

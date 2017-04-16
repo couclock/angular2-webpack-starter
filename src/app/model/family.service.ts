@@ -107,7 +107,9 @@ export class FamilyService {
         return this.http
             .put(url, JSON.stringify(family), { headers: this.headers })
             .toPromise()
-            .then(() => family)
+            .then((response) => {
+                return response.json() as Family;
+            })
             .catch(this.handleError);
     }
 
@@ -121,8 +123,8 @@ export class FamilyService {
             })
             .catch(this.handleError);
 
-//        FAMILIES.push(family);
-//        return Promise.resolve(family);
+        //        FAMILIES.push(family);
+        //        return Promise.resolve(family);
     }
 
     public delete(id: number): Promise<void> {

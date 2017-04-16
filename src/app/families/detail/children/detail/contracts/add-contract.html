@@ -6,29 +6,27 @@
       <md-input-container>
         <input mdInput type="date" name="fromDate" required placeholder="Date de début" #fromDate="ngModel" [(ngModel)]="contract.fromDate"
         />
-        <md-hint *ngIf="fromDate.errors && (fromDate.dirty || fromDate.touched) && fromDate.errors.required" >
-          Champs obligatoire.
-        </md-hint>
+        <md-error>Champs obligatoire.</md-error>
       </md-input-container>
       <md-input-container fxFlexOffset="10">
-        <input mdInput type="date" name="toDate" required placeholder="Date de fin" #toDate="ngModel" [(ngModel)]="contract.toDate" />
-        <md-hint *ngIf="toDate.errors && (toDate.dirty || toDate.touched) && toDate.errors.required" >
-          Champs obligatoire.
-        </md-hint>
+        <input mdInput type="date" name="toDate" required placeholder="Date de fin" #toDate="ngModel" [(ngModel)]="contract.toDate"
+        />
+        <md-error>Champs obligatoire.</md-error>
+
       </md-input-container>
     </div>
     <div fxLayout="row">
       <md-input-container>
-        <input mdInput type="number" name="holidayWeekCount" required placeholder="Semaines de congés" #holidayWeekCount="ngModel" [(ngModel)]="contract.holidayWeekCount" />
-        <md-hint *ngIf="holidayWeekCount.errors && (holidayWeekCount.dirty || holidayWeekCount.touched) && holidayWeekCount.errors.required" >
-          Champs obligatoire.
-        </md-hint>
+        <input mdInput type="number" name="holidayWeekCount" required placeholder="Semaines de congés" #holidayWeekCount="ngModel"
+          [(ngModel)]="contract.holidayWeekCount" />
+        <md-error>Champs obligatoire.</md-error>
+
       </md-input-container>
       <md-input-container fxFlexOffset="10">
-        <input mdInput type="number" name="hoursPerWeek" required placeholder="Heures par semaine" #hoursPerWeek="ngModel" [(ngModel)]="contract.hoursPerWeek" />
-        <md-hint *ngIf="hoursPerWeek.errors && (hoursPerWeek.dirty || hoursPerWeek.touched) && hoursPerWeek.errors.required" >
-          Champs obligatoire.
-        </md-hint>
+        <input mdInput type="number" name="hoursPerWeek" required placeholder="Heures par semaine" #hoursPerWeek="ngModel" [(ngModel)]="contract.hoursPerWeek"
+        />
+        <md-error>Champs obligatoire.</md-error>
+
       </md-input-container>
     </div>
   </div>

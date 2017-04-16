@@ -28,15 +28,6 @@ export class AddContractDialogComponent {
      */
     public saveContract(): void {
 
-/*
-        let contract: Contract = {
-            status: CONTRACT_STATUS.PREPARING,
-            fromDate: newFromDate,
-            toDate: newToDate,
-            holidayWeekCount: newHolidayWeekCount,
-            hoursPerWeek: newHoursPerWeek
-        };
-        */
         this.childService.addContract(this.child.id, this.contract).then(
             () => {
                 this.dialogRef.close('CREATE_CONTRACT');

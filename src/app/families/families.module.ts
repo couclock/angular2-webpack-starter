@@ -26,6 +26,8 @@ import { AddParentDialogComponent } from './detail/parents/add-parent.component'
 import { FamilyDetailContactsComponent } from './detail/contacts/family-detail-contacts.component';
 import { AddContactDialogComponent } from './detail/contacts/add-contact.component';
 
+import { FamilyInfosComponent } from './detail/infos/family-infos.component';
+
 import { DeleteChildDialogComponent } from './detail/children/detail/delete-child.component';
 import { InlineEditComponent } from './detail/children/detail/inline-edit.component';
 
@@ -77,7 +79,8 @@ export const ROUTES: Routes = [
     AddContractDialogComponent,
     ContractDetailComponent,
     ContractInfosComponent,
-    IncompleteContractDialogComponent
+    IncompleteContractDialogComponent,
+    FamilyInfosComponent
   ],
   entryComponents: [
     AddFamilyDialogComponent,

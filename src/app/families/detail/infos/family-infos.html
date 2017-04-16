@@ -1,0 +1,22 @@
+<div class="family-infos" fxLayout="column" fxLayoutAlign="start center" *ngIf="family">
+
+        <div fxLayout="row" fxLayoutAlign="center">
+
+            <md-input-container>
+                <input mdInput placeholder="Nom de famille" name="familyName" required #familyName value="{{ family.name }}" (blur)="saveFamilyName(familyName.value)">
+            </md-input-container>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="center">
+
+            <md-input-container>
+                <input mdInput type="number" min="1" placeholder="Nombre d'enfants à charge" required #childrenCount value="{{ family.childrenCount }}" (blur)="saveChildrenCount(childrenCount.value)">
+            </md-input-container>
+            
+            <md-input-container>
+                <input mdInput type="number" min="0" placeholder="Nombre d'enfants handicapés" required #disabledChildrenCount value="{{ family.disabledChildrenCount }}" 
+                (blur)="saveDisabledChildrenCount(disabledChildrenCount.value)">
+            </md-input-container>
+        </div>
+
+</div>
