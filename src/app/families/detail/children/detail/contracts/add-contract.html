@@ -1,21 +1,34 @@
 <h1 md-dialog-title>Nouveau contrat pour {{ child.firstName }}</h1>
 
-<form novalidate>
-  <div md-dialog-content>
+<form novalidate class="error-mgt-form" #myForm="ngForm" (ngSubmit)="saveContract()">
+  <div md-dialog-content class="add-contract">
     <div fxLayout="row">
       <md-input-container>
-        <input mdInput type="date" name="fromDate" placeholder="Date de début" #fromDate value="{{ contract.fromDate }}">
+        <input mdInput type="date" name="fromDate" required placeholder="Date de début" #fromDate="ngModel" [(ngModel)]="contract.fromDate"
+        />
+        <md-hint *ngIf="fromDate.errors && (fromDate.dirty || fromDate.touched) && fromDate.errors.required" >
+          Champs obligatoire.
+        </md-hint>
       </md-input-container>
       <md-input-container fxFlexOffset="10">
-        <input mdInput type="date" name="toDate" placeholder="Date de fin" #toDate value="{{ contract.toDate }}">
+        <input mdInput type="date" name="toDate" required placeholder="Date de fin" #toDate="ngModel" [(ngModel)]="contract.toDate" />
+        <md-hint *ngIf="toDate.errors && (toDate.dirty || toDate.touched) && toDate.errors.required" >
+          Champs obligatoire.
+        </md-hint>
       </md-input-container>
     </div>
     <div fxLayout="row">
       <md-input-container>
-        <input mdInput type="number" placeholder="Semaines de congés" #holidayWeekCount value="{{ contract.holidayWeekCount }}">
+        <input mdInput type="number" name="holidayWeekCount" required placeholder="Semaines de congés" #holidayWeekCount="ngModel" [(ngModel)]="contract.holidayWeekCount" />
+        <md-hint *ngIf="holidayWeekCount.errors && (holidayWeekCount.dirty || holidayWeekCount.touched) && holidayWeekCount.errors.required" >
+          Champs obligatoire.
+        </md-hint>
       </md-input-container>
       <md-input-container fxFlexOffset="10">
-        <input mdInput type="number" placeholder="Heures par semaine" #hoursPerWeek value="{{ contract.hoursPerWeek }}">
+        <input mdInput type="number" name="hoursPerWeek" required placeholder="Heures par semaine" #hoursPerWeek="ngModel" [(ngModel)]="contract.hoursPerWeek" />
+        <md-hint *ngIf="hoursPerWeek.errors && (hoursPerWeek.dirty || hoursPerWeek.touched) && hoursPerWeek.errors.required" >
+          Champs obligatoire.
+        </md-hint>
       </md-input-container>
     </div>
   </div>
@@ -24,8 +37,7 @@
     </div>
     <div fxLayout="row" fxLayoutAlign="space-around center">
       <button type="button" md-button (click)="dialogRef.close()">Annuler</button> &nbsp;&nbsp;
-      <button type="submit" md-raised-button (click)="saveContract(fromDate.value, toDate.value, holidayWeekCount.value, hoursPerWeek.value)"
-        color="accent">Enregistrer</button>
+      <button type="submit" [disabled]="!myForm.form.valid" md-raised-button color="accent">Enregistrer</button>
     </div>
   </div>
 </form>

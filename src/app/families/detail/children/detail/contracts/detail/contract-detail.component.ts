@@ -151,7 +151,7 @@ export class ContractDetailComponent implements OnInit {
      */
     private setButtonsToDisplay(): void {
 
-        if (this.contract.status.toString() === CONTRACT_STATUS[CONTRACT_STATUS.PREPARING]) {
+        if (this.contract.status === CONTRACT_STATUS.PREPARING) {
             this.buttons = [
                 {
                     color: 'primary',
@@ -168,7 +168,7 @@ export class ContractDetailComponent implements OnInit {
                     }
                 }
             ];
-        } else if (this.contract.status.toString() === CONTRACT_STATUS[CONTRACT_STATUS.VALIDATED]) {
+        } else if (this.contract.status === CONTRACT_STATUS.VALIDATED) {
             this.buttons = [
                 {
                     color: 'warn',
@@ -178,7 +178,7 @@ export class ContractDetailComponent implements OnInit {
                     }
                 }
             ];
-        } else if (this.contract.status.toString() === CONTRACT_STATUS[CONTRACT_STATUS.ACTIVE]) {
+        } else if (this.contract.status === CONTRACT_STATUS.ACTIVE) {
             this.buttons = [
                 {
                     color: 'warn',
@@ -188,7 +188,7 @@ export class ContractDetailComponent implements OnInit {
                     }
                 }
             ];
-        } else if (this.contract.status.toString() === CONTRACT_STATUS[CONTRACT_STATUS.DONE]) {
+        } else if (this.contract.status === CONTRACT_STATUS.DONE) {
             this.buttons = [
                 {
                     color: 'warn',

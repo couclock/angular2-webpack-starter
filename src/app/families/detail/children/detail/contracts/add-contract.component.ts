@@ -6,7 +6,7 @@ import { Child, Contract, CONTRACT_STATUS, ChildService } from '../../../../../m
 @Component({
     selector: 'add-contract',
     template: require('./add-contract.html'),
-    // styles: [require('./add-contract.scss')]
+    styles: [require('./add-contract.scss')]
 })
 export class AddContractDialogComponent {
 
@@ -20,14 +20,15 @@ export class AddContractDialogComponent {
         private snackBar: MdSnackBar,
         @Inject(MD_DIALOG_DATA) private data: any) {
         this.child = data.child;
+        this.contract.status = CONTRACT_STATUS.PREPARING;
     }
 
     /**
      * Save contract : send to backend
      */
-    public saveContract(newFromDate: Date, newToDate: Date,
-        newHolidayWeekCount: number, newHoursPerWeek: number): void {
+    public saveContract(): void {
 
+/*
         let contract: Contract = {
             status: CONTRACT_STATUS.PREPARING,
             fromDate: newFromDate,
@@ -35,7 +36,8 @@ export class AddContractDialogComponent {
             holidayWeekCount: newHolidayWeekCount,
             hoursPerWeek: newHoursPerWeek
         };
-        this.childService.addContract(this.child.id, contract).then(
+        */
+        this.childService.addContract(this.child.id, this.contract).then(
             () => {
                 this.dialogRef.close('CREATE_CONTRACT');
             },

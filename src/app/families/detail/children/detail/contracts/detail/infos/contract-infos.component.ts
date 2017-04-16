@@ -102,7 +102,7 @@ export class ContractInfosComponent {
      * @param fieldName
      */
     public isDisabled(fieldName: string): boolean {
-        if (this.contract.status.toString() !== CONTRACT_STATUS[CONTRACT_STATUS.PREPARING]) {
+        if (this.contract.status !== CONTRACT_STATUS.PREPARING) {
             return true;
         }
         if (fieldName !== 'hoursPerWeek') {

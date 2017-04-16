@@ -101,6 +101,7 @@ export class ChildDetailComponent implements OnInit {
     public openDialog() {
         let dialogRef;
         let config: MdDialogConfig = {
+            width: '500px',
             data: {
                 family: this.family,
                 child: this.child

@@ -1,12 +1,14 @@
 
 import { ContractPlanningDay } from './contract-planning-day.model';
 
-export enum CONTRACT_STATUS {
-    PREPARING,
-    VALIDATED,
-    ACTIVE,
-    DONE
-}
+export type CONTRACT_STATUS = 'PREPARING' | 'VALIDATED' | 'ACTIVE' | 'DONE';
+
+export const CONTRACT_STATUS = {
+    PREPARING: 'PREPARING' as CONTRACT_STATUS,
+    VALIDATED: 'VALIDATED' as CONTRACT_STATUS,
+    ACTIVE: 'ACTIVE' as CONTRACT_STATUS,
+    DONE: 'DONE' as CONTRACT_STATUS
+};
 
 export class Contract {
     public id?: number;
